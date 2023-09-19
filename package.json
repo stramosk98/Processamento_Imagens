@@ -1,0 +1,22 @@
+{
+  "name": "process-img",
+  "version": "1.0.0",
+  "description": "Atividades da disciplina de Processamento digital de imagens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stramosk98/Processamento_Imagens.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stramosk98/Processamento_Imagens/issues"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
+  },
+  "homepage": "https://github.com/stramosk98/Processamento_Imagens#readme"
+}
