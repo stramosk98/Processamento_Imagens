@@ -30,6 +30,9 @@ async function getFormatedImage(type, height, width, intensity, path, action, co
             case "SeparateColors":
                 getSeparateColors(imageInfo)
                 break
+            case "RealceImage":
+                getRealceImage(imageInfo)
+                break
             default:
                 console.log("error parameter")
         }
@@ -118,9 +121,34 @@ function getSeparateColors(imageInfo){
                         console.log("Error")
                 }
                 newList = []
-           }
+            }
         }
     }
 }
+                
+function getRealceImage(imageInfo){
+    imageInfo.list.push(`${imageInfo.type}\n${imageInfo.height} ${imageInfo.width}\n${imageInfo.intensity}`)
+    
+    let max = imageInfo.pixelValues.reduce(function (a, b) {
+        return Math.max(a, b)
+    }, -Infinity)
+    
+    let min = imageInfo.pixelValues.reduce(function (a, b) {
+        if(a !== null && b !== null){
+            return Math.min(a, b)
+        } else {
+            return a !== null ? a : b
+        }
+    }, Infinity)
 
+    let a = (255 / (max - min))
+    let b = (a * min)
+      
+    for (let i = 0; i < imageInfo.pixelValues.length; i++) {
+        if(imageInfo.pixelValues[i] !== null){
+            imageInfo.list.push(Math.round((a * imageInfo.pixelValues[i]) - b))
+        }
+    }
+}
+                
 exports.getFormatedImage = getFormatedImage

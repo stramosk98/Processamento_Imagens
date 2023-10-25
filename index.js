@@ -50,6 +50,13 @@ async function createFile(action, color = 'R_min') {
                 imageContent = await getFormatedImage("P3", 481, 321, 255, "./imgs/Fig4.ppm", action, color);
                 fs.writeFile(`./imgs/Atividade8/p3_${color}.ppm`, imageContent, (err) => {getError(err)})
                 break
+            case "RealceImage":
+                imageContent = await getFormatedImage("P2", 800, 800, 255, "./imgs/EntradaEscalaCinza.pgm", action);
+                fs.writeFile(`./imgs/Atividade10/realce_image.pgm`, imageContent, (err) => {getError(err)})
+
+                imageContent = await getFormatedImage("P3", 800, 800, 255, "./imgs/EntradaEscalaRGB.ppm", action);
+                fs.writeFile(`./imgs/Atividade10/realce_image.ppm`, imageContent, (err) => {getError(err)})
+                break
             default:
                 console.log("invalid parameter")
         }
@@ -59,4 +66,4 @@ async function createFile(action, color = 'R_min') {
 
 }
 
-createFile("SeparateColors")
+createFile("RealceImage")
